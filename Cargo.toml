@@ -6,7 +6,7 @@ edition = "2021"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
-esp32c3-hal = "0.14.0"
+esp32c3-hal = { version = "0.14.0", features = ["embassy", "embassy-executor-thread", "embassy-time-timg0"] }
 esp-backtrace = { version = "0.10.0", features = ["esp32c3", "panic-handler", "exception-handler", "print-uart"] }
 esp-println = { version = "0.8.0", features = ["esp32c3", "log"] }
 log = { version = "0.4.20" }
@@ -17,3 +17,11 @@ embedded-svc = { version = "0.26.1", default-features = false, features = [] }
 embedded-io = "0.6.1"
 heapless = { version = "0.7.17", default-features = false }
 
+embedded-hal = { version = "0.2.7", features = ["unproven"] }
+embedded-hal-1 = { version = "=1.0.0-rc.2", package = "embedded-hal" }
+embedded-hal-async = "1.0.0-rc.2"
+embedded-io-async = "0.6.1"
+
+embassy-executor = { version = "0.4.0", features = ["nightly"] }
+embassy-sync = { version = "0.5.0" }
+embassy-time = { version = "0.2.0" }
