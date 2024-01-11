@@ -1,6 +1,6 @@
 [target.riscv32imc-unknown-none-elf]
 runner = "espflash flash --monitor"
-# runner = "probe-rs run --chip esp32c3"
+# runner = "probe-rs run --chip esp32c3 --format idf"
 
 
 [env]
@@ -14,6 +14,9 @@ rustflags = [
   # Required to obtain backtraces (e.g. when using the "esp-backtrace" crate.)
   # NOTE: May negatively impact performance of produced code
   "-C", "force-frame-pointers",
+  #
+  # ADD following new flag ---
+  "-C", "link-arg=-Tdefmt.x",
 ]
 
 target = "riscv32imc-unknown-none-elf"
