@@ -2,14 +2,49 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Wokwi GDB",
-      "type": "cppdbg",
+      "type": "probe-rs-debug",
       "request": "launch",
-      "program": "${workspaceFolder}/target/riscv32imc-unknown-none-elf/debug/fishbowl_esp32c3",
+      "name": "Launch",
       "cwd": "${workspaceFolder}",
-      "MIMode": "gdb",
-      "miDebuggerPath": "${userHome}/.espressif/tools/riscv32-esp-elf/esp-2021r2-patch3-8.4.0/riscv32-esp-elf/bin/riscv32-esp-elf-gdb",
-      "miDebuggerServerAddress": "localhost:3333"
+      "chip": "esp32c3", //!MODIFY
+      "flashingConfig": {
+        "flashingEnabled": true,
+        "resetAfterFlashing": true,
+        "haltAfterReset": true,
+        "formatOptions": {
+          "format": "idf" //!MODIFY (or remove). Valid values are: 'elf'(default), 'idf'
+        }
+      },
+      "coreConfigs": [
+        {
+          "coreIndex": 0,
+          // "programBinary": "target/riscv32imc-unknown-none-elf/debug/${workspaceFolderBasename}", //!MODIFY
+          "programBinary": "target/riscv32imc-unknown-none-elf/debug/${workspaceFolderBasename}-esp32c3", //!MODIFY
+        }
+      ]
+    },
+    {
+      "type": "probe-rs-debug",
+      "request": "attach",
+      "name": "Attach",
+      "cwd": "${workspaceFolder}",
+      "chip": "esp32c3", //!MODIFY
+      "coreConfigs": [
+        {
+          "coreIndex": 0,
+          "programBinary": "target/riscv32imc-unknown-none-elf/debug/${workspaceFolderBasename}", //!MODIFY
+        }
+      ]
     }
+    //{
+    //  "name": "Wokwi GDB",
+    //  "type": "cppdbg",
+    //  "request": "launch",
+    //  "program": "${workspaceFolder}/target/riscv32imc-unknown-none-elf/debug/fishbowl_esp32c3",
+    //  "cwd": "${workspaceFolder}",
+    //  "MIMode": "gdb",
+    //  "miDebuggerPath": "${userHome}/.espressif/tools/riscv32-esp-elf/esp-2021r2-patch3-8.4.0/riscv32-esp-elf/bin/riscv32-esp-elf-gdb",
+    //  "miDebuggerServerAddress": "localhost:3333"
+    //}
   ]
 }
