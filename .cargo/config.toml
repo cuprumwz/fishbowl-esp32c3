@@ -17,7 +17,7 @@ rustflags = [
   "-C", "force-frame-pointers",
   #
   # ADD following new flag ---
-  "-C", "link-arg=-Tdefmt.x",
+  # "-C", "link-arg=-Tdefmt.x",
 ]
 
 target = "riscv32imc-unknown-none-elf"

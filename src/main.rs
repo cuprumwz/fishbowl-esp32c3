@@ -4,7 +4,7 @@
 
 use embassy_executor::Spawner;
 use embassy_time::{Duration, Timer};
-use esp32c3_hal::{clock::ClockControl, embassy, peripherals::Peripherals, prelude::*};
+use esp_hal::{clock::ClockControl, embassy, peripherals::Peripherals, prelude::*};
 use esp_backtrace as _;
 
 #[embassy_executor::task]
@@ -31,7 +31,7 @@ async fn main(spawner: Spawner) {
     // #[cfg(feature = "embassy-time-timg0")]
     embassy::init(
         &clocks,
-        esp32c3_hal::timer::TimerGroup::new(peripherals.TIMG0, &clocks).timer0,
+        esp_hal::timer::TimerGroup::new(peripherals.TIMG0, &clocks)
     );
 
     spawner.spawn(run()).ok();
