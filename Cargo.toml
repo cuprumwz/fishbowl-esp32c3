@@ -28,7 +28,13 @@ esp-wifi = { version = "0.4.0", features = [
     "phy-enable-usb",
     "utils",
     "wifi-default",
+    "wifi",
+    "ble",
+    "coex",
+    "async",
+    "embassy-net",
 ] }
+
 heapless = { version = "0.8.0", default-features = false }
 smoltcp = { version = "0.10.0", default-features = false, features = [
     "medium-ethernet",
@@ -60,6 +66,9 @@ embassy-net = { version = "0.4.0", features = [
 minimq = "0.8.0"
 sequential-storage = "1"
 miniconf = "0.9.0"
+
+cfg-if = "1.0.0"
+static_cell = { version = "2.0", features = ["nightly"] }
 
 # panic-persist = { version = "0.3", features = ["utf8", "custom-panic-handler"] }
 # sequential-storage = "0.6"
